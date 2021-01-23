@@ -1,0 +1,99 @@
+{
+  "author": "https://github.com/jumpingjh/",
+  "description": "A lot of JavaScript Tricks",
+  "extensionNamespace": "",
+  "fullName": "JavaScript Tools",
+  "helpPath": "",
+  "iconUrl": "",
+  "name": "DebugExt",
+  "previewIconUrl": "",
+  "shortDescription": "JavaScript Tricks",
+  "version": "0.0.1",
+  "tags": [
+    "javascrip tricks"
+  ],
+  "eventsFunctions": [
+    {
+      "description": "ConsoleLog",
+      "fullName": "ConsoleLog",
+      "functionType": "Action",
+      "name": "ConsoleLog",
+      "sentence": "ConsoleLog Text: _PARAM1_  Type (Log/Alert): _PARAM2_",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "var text = eventsFunctionContext.getArgument('text');\nvar messageType = eventsFunctionContext.getArgument('type');\n\nif (messageType == \"Log\"){\n  console.log(text);\n  }\nif (messageType == \"Alert\"){\n  alert(text);\n  }\n",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Text",
+          "longDescription": "",
+          "name": "text",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        },
+        {
+          "codeOnly": false,
+          "defaultValue": "",
+          "description": "Type(Log or Alert)",
+          "longDescription": "",
+          "name": "type",
+          "optional": false,
+          "supplementaryInformation": "",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Generate Date and Time String",
+      "fullName": "Generate Date and Time String",
+      "functionType": "StringExpression",
+      "name": "DateAndTime",
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "//runtimeScene.setBackgroundColor(100,100,240);\nfunction padLeadingZeros(num, size) {\n    var s = num+\"\";\n    while (s.length < size) s = \"0\" + s;\n    return s;\n}\n\nfunction uuidv4() {\n  var d = new Date();\n  var s = '';\n  var hours = padLeadingZeros(d.getHours(),2); \n  var minutes = padLeadingZeros(d.getMinutes(),2);\n  var seconds =  padLeadingZeros(d.getSeconds(),2);\n  var day = padLeadingZeros(d.getDate(),2); \n  var month = padLeadingZeros(d.getMonth() + 1, 2);\n  var year = d.getFullYear().toString();\n\n  //var str2 = \"world!\";':'\n  //var str3 = \" Have a nice day!\";\n  var res = s.concat(day,'/',month,'/', year,'-', hours , ':' , minutes , ':' , seconds);\n  return res.toString();\n}\n\neventsFunctionContext.returnValue = uuidv4();",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    },
+    {
+      "description": "",
+      "fullName": "Generate random GUID",
+      "functionType": "StringExpression",
+      "name": "Guid",
+      "sentence": "",
+      "events": [
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "//runtimeScene.setBackgroundColor(100,100,240);\nfunction uuidv4() {\n  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>\n    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)\n  );\n}\n\neventsFunctionContext.returnValue = uuidv4();",
+          "parameterObjects": "",
+          "useStrict": true,
+          "eventsSheetExpanded": false
+        }
+      ],
+      "parameters": [],
+      "objectGroups": []
+    }
+  ],
+  "eventsBasedBehaviors": []
+}
